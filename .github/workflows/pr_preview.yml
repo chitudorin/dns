@@ -1,0 +1,30 @@
+name: DNSControl-Preview
+
+on:
+  pull_request:
+    paths:
+      - '*dnsconfig.js'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() }}
+    steps:
+      -
+        name: Checkout repo
+        uses: actions/checkout@7.0.1
+      -
+        name: Prepare creds_file
+        run: printf '%s' '${{secrets.CREDS_JSON}}' > creds.json
+      -
+        name: call dnscontrol action
+        uses: DNSControl/dnscontrol-action@v.1.3.0
+        with:
+          cmdargs: preview
+          post_pr_comment: true
+          post_summary: true
+          check: true
