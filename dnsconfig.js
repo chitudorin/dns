@@ -29,5 +29,6 @@ D("chitzu.ro", REG_NONE, DnsProvider(DNS_CLOUDFLAREAPI),
     TXT("mta._domainkey.mg", "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLdYN1SJkTfQ3x9W6RqSVBdMUDOG+WiT2IsnawAnmgLj1s/xzyqHWNdoQORL5uY0UtH/5IMzR8/PDgJ+zeJMMkij0Lqunfey9mLoqK4Y+qlkq9hBgI00+fxRzzrhXd+6op2OBOmqtwKIAZySWqJ7330GPDqxr73IDzTXkeSsbBLwIDAQAB"),
     CNAME("email.mg", "eu.mailgun.org."),
     A("navidrome", "158.180.26.241", TTL(1)),
+    A("testing", "158.180.26.241", TTL(1)),
 );
 
