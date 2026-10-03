@@ -1,0 +1,36 @@
+name: DNSControl-Merge
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*dnsconfig.js"
+      - "*creds.json"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() }}
+    steps:
+      -
+        name: Checkout repo
+        uses: actions/checkout@7.0.1
+        with:
+          persist-credentials: false
+
+      -
+        name: Prepare creds_file
+        run: printf '%s' '${{secrets.CREDS_JSON}}' > creds.json
+
+      -
+        name: call dnscontrol action
+        uses: DNSControl/dnscontrol-action@v.1.3.0
+        with:
+          cmdargs: push
+          post_pr_comment: false
+          post_summary: true
+          check: false
+          creds_file: creds.json
