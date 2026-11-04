@@ -25,5 +25,6 @@ D("chitzu.ro", REG_NONE, DnsProvider(DNS_CLOUDFLAREAPI),
     CNAME("home", "nirod.go.ro.", TTL(1)),
     CNAME("*.home", "nirod.go.ro.", TTL(1)),
     A("navidrome", "158.180.26.241", TTL(1)),
+    A("omniroute", "158.180.26.241", TTL(1)),
 );
 
